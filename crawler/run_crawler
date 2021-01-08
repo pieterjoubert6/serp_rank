@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd /home/app/crawler/ || exit
+PATH=$PATH:/usr/local/bin
+export PATH
+scrapy runspider main.py

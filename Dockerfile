@@ -22,6 +22,6 @@ COPY crawler crawler
 COPY server server
 
 RUN chmod +x crawler/run_crawler
-#RUN crawler/run_crawler
+RUN crawler/run_crawler
 
-CMD ["cron", "-f"]
+CMD cron && python3 /home/app/server/server.py
