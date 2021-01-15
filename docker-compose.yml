@@ -1,8 +1,15 @@
 version: '3.2'
 services:
-  serp-image:
-    container_name: serp
-    build: .
+  crawler:
+    container_name: serp-crawler
+    build: ./crawler
+    volumes:
+      - type: volume
+        source: .
+        target: /home/app/mount
+  server:
+    container_name: serp-server
+    build: ./server
     ports:
       - "5000:5000"
     volumes:
