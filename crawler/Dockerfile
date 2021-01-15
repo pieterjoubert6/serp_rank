@@ -24,6 +24,4 @@ COPY run_crawler crawler
 RUN chmod +x crawler/run_crawler
 RUN crawler/run_crawler
 
-RUN touch crawler/metrics
-
 CMD cron -f
