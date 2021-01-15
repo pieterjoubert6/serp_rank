@@ -24,4 +24,6 @@ COPY server server
 RUN chmod +x crawler/run_crawler
 RUN crawler/run_crawler
 
+RUN touch crawler/metrics
+
 CMD cron && python3 /home/app/server/server.py

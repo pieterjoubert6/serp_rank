@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/metrics", methods=['GET'])
 def get_file():
     try:
-        with open("/home/app/crawler/metrics", "r+") as f:
+        with open("/home/app/mount/metrics", "r+") as f:
             data = f.read()
         return data, 200
     except FileNotFoundError:

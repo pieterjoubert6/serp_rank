@@ -13,7 +13,7 @@ def save_rankings(rank_data, category_definitions, latest_ranks):
     #         "rank": item["rank"], "db": item["db"],
     #         "category": category if (category := item.get("category")) else 0}))
     # file2write.close()
-    file2write = open("metrics", 'w')
+    file2write = open("/home/app/mount/metrics", 'w')
     for item in latest_ranks:
         print(item)
         # latest_rank = LatestRank(
