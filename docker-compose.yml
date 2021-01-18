@@ -9,22 +9,14 @@ services:
     container_name: serp-server
     build: ./server
     ports:
-      - "5000:5000"
+      - 5000:5000
     volumes:
       - /data:/home/app/mount
   grafana:
-    image: grafana/grafana:master
+    image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - 3000:3000
-    environment:
-      GF_RENDERING_SERVER_URL: http://renderer:8081/render
-      GF_RENDERING_CALLBACK_URL: http://grafana:3000/
-      GF_LOG_FILTERS: rendering:debug
-  renderer:
-    image: grafana/grafana-image-renderer:latest
-    ports:
-      - 8081
+      - 443:3000
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
