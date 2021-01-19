@@ -8,6 +8,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    user: "1000"
     volumes:
       - /data/grafana:/var/lib/grafana
     ports:
