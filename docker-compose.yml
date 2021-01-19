@@ -8,9 +8,6 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
-    environment:
-      - GF_AUTH_PROXY_AUTO_SIGN_UP=false
-      - GF_AUTH_PROXY_ENABLED=true
     ports:
       - 3000:3000
   influxdb:
