@@ -12,8 +12,8 @@ services:
     ports:
       - 3000:3000
     environment:
-      allow_embedding: "true"
-      enabled: "true"
+      - allow_embedding=true
+      - enabled=true
 
   influxdb:
     image: quay.io/influxdb/influxdb:v2.0.3
