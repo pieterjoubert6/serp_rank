@@ -25,7 +25,7 @@ def save_rankings(rank_data, category_definitions, latest_ranks):
         sequence.append(f'mem,host=host1 category={item["category"]} rank={item["rank"]}')
         point = Point("mem") \
             .tag("category_name", f'{item["category_name"]}') \
-            .field("rank", float(item["rank"])+1)\
+            .field("rank", float(item["rank"]))\
             .time(time, WritePrecision.NS)
         write_api.write(bucket, org, point)
     file2write.close()
