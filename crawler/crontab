@@ -1,1 +1,1 @@
-*/60 * * * * /usr/bin/bash /home/app/crawler/run_crawler
+*/1 * * * * /usr/bin/bash /home/app/crawler/run_crawler
