@@ -8,8 +8,13 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    volumes: /data/grafana:/var/lib/grafana
     ports:
       - 3000:3000
+    environment:
+      allow_embedding: true
+      enabled: true
+
   influxdb:
     image: quay.io/influxdb/influxdb:v2.0.3
     container_name: influxdb
