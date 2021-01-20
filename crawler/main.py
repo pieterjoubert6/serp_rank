@@ -30,4 +30,4 @@ class OptumSpider(scrapy.Spider):
 
         json_object = json.loads(ranked_data)
 
-        save_rankings(json_object, category_definitions, latest_ranks)
+        save_rankings(latest_ranks)
