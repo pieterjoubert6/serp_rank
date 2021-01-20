@@ -9,7 +9,6 @@ services:
     build:
       context: ./grafana
     container_name: grafana
-    user: "472"
     volumes:
       - /data/grafana:/var/lib/grafana
     ports:
