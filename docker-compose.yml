@@ -23,7 +23,12 @@ services:
     ports:
       - 8086:8086
     volumes:
-      - /data:/var/lib/influxdb
+      - influxdb-volume:/var/lib/influxdb
+    environment:
+      INFLUXDB_USERNAME: $INFLUXDB_USERNAME
+      INFLUXDB_PASSWORD: $INFLUXDB_PASSWORD
 volumes:
   grafana-storage:
+    external: true
+  influxdb-volume:
     external: true
