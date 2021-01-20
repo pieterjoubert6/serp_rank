@@ -23,11 +23,4 @@ class OptumSpider(scrapy.Spider):
                 "category": index,
                 "category_name": field.css('span:nth-child(2)::text').get(),
             })
-
-        ranked_data = "{" + script_tag[script_tag.find('ranks') - 1:].strip()
-        ranked_data = ranked_data[:ranked_data.find(']') + 2].strip() + "}"
-        ranked_data = ranked_data[:10] + "\"US\"" + ranked_data[23:]
-
-        json_object = json.loads(ranked_data)
-
         save_rankings(latest_ranks)
