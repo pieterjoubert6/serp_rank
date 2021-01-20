@@ -9,8 +9,9 @@ services:
     build:
       context: ./grafana
     container_name: grafana
+    user: 1000
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - /data/grafana:/var/lib/grafana
     ports:
       - 3000:3000
     environment:
@@ -20,13 +21,11 @@ services:
   influxdb:
     image: quay.io/influxdb/influxdb:v2.0.3
     container_name: influxdb
+    user: 1000
     ports:
       - 8086:8086
     volumes:
-      - /data:/var/lib/influxdb
+      - /data/influxdb:/var/lib/influxdb
     environment:
       INFLUXDB_ADMIN_USER: $INFLUXDB_USERNAME
       INFLUXDB_ADMIN_PASSWORD: $INFLUXDB_PASSWORD
-volumes:
-  grafana-storage:
-    external: true
