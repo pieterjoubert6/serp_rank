@@ -3,7 +3,7 @@ from datetime import datetime
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-token = "mv8uWtXd4-5_3pCKuoHRy5jV52PNqMDLkflteA3SAFdkf9q5Q1z1NtRQ7XwyWWmxzg3IrHMGkfWtolpxs4RiGw=="
+token = "paste_token"
 org = "ranktank"
 bucket = "serp_rank"
 
