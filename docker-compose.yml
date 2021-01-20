@@ -25,8 +25,8 @@ services:
     volumes:
       - influxdb-volume:/var/lib/influxdb
     environment:
-      INFLUXDB_USERNAME: $INFLUXDB_USERNAME
-      INFLUXDB_PASSWORD: $INFLUXDB_PASSWORD
+      INFLUXDB_ADMIN_USER: $INFLUXDB_USERNAME
+      INFLUXDB_ADMIN_PASSWORD: $INFLUXDB_PASSWORD
 volumes:
   grafana-storage:
     external: true

@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get -y install python3.9 && apt-get -y install python3-pip && apt-get -y install cron
+RUN apt-get update && apt-get -y install python3.9 && apt-get -y install python3-pip && apt-get -y install cron && apt-get -y install vim
 
 COPY requirements.txt /tmp/
 
