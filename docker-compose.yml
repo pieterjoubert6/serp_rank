@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   grafana:
+    user: '1000'
     build:
       context: ./grafana
     container_name: grafana
@@ -9,6 +10,7 @@ services:
     ports:
       - 3000:3000
   grafana-admin:
+    user: '1000'
     build:
       context: ./grafana-admin
     container_name: grafana-admin
