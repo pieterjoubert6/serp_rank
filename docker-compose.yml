@@ -15,8 +15,6 @@ services:
         target: /var/lib/grafana
     ports:
       - 3000:3000
-    environment:
-      GF_USERS_ALLOW_SIGN_UP: "false"
   grafana-admin:
     build:
       context: ./grafan-admina

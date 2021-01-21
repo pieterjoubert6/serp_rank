@@ -6,6 +6,8 @@ ENV GF_AUTH_DISABLE_LOGIN_FORM "true"
 ENV GF_AUTH_ANONYMOUS_ENABLED "true"
 # Role of anonymous user
 ENV GF_AUTH_ANONYMOUS_ORG_ROLE "Viewer"
+
+ENV GF_USERS_ALLOW_SIGN_UP "false"
 # Install plugins here our in your own config file
 # ENV GF_INSTALL_PLUGINS="<list of plugins seperated by ,"
 
