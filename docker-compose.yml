@@ -26,6 +26,5 @@ services:
       - 8086:8086
     volumes:
       - influxdb-volume:/var/lib/influxdb
-#volumes:
-#  grafana-volume:
-#  influxdb-volume:
+volumes:
+  influxdb-volume:
