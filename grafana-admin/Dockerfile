@@ -1,1 +1,1 @@
-FROM grafana/grafana:7.1.5-ubuntu
+FROM grafana/grafana:master
