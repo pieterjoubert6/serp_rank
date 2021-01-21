@@ -22,7 +22,8 @@ services:
     volumes:
       - influxdb-volume:/var/lib/influxdb
   grafana:
-    image: ./grafana
+    build:
+      context: ./grafana
     restart: always
     ports:
       - 3000:3000
