@@ -1,11 +1,12 @@
 version: '3.3'
 services:
   grafana-admin:
-    build:
-      context: grafana/grafana
+    image: grafana:latest
     container_name: grafana-admin
     volumes:
       - grafana-storage:/var/lib/grafana
+    depends_on:
+      - influxdb
     ports:
       - 3001:3000
   crawler:
@@ -21,7 +22,7 @@ services:
     volumes:
       - influxdb-volume:/var/lib/influxdb
   grafana:
-    image: grafana/grafana
+    image: ./grafana
     restart: always
     ports:
       - 3000:3000
