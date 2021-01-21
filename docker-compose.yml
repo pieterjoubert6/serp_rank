@@ -10,18 +10,6 @@ services:
         target: /var/lib/grafana
     ports:
       - 3000:3000
-  crawler:
-    container_name: serp-crawler
-    build: ./crawler
-    volumes:
-      - /data:/home/app/mount
-  influxdb:
-    image: quay.io/influxdb/influxdb:v2.0.3
-    container_name: influxdb
-    ports:
-      - 8086:8086
-    volumes:
-      - influxdb-volume:/var/lib/influxdb
   grafana-admin:
     build:
       context: ./grafana-admin
@@ -32,6 +20,18 @@ services:
         target: /var/lib/grafana
     ports:
       - 3001:3000
+  crawler:
+    container_name: serp-crawler
+    build: ./crawler
+    volumes:
+      - /data:/home/app/mount
+    influxdb:
+      image: quay.io/influxdb/influxdb:v2.0.3
+      container_name: influxdb
+      ports:
+        - 8086:8086
+      volumes:
+        - influxdb-volume:/var/lib/influxdb
 volumes:
   grafana-volume:
   influxdb-volume:
