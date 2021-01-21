@@ -2,7 +2,7 @@ version: '3.3'
 services:
   grafana-admin:
     image:  grafana/grafana:latest
-    container_name: grafana-admin
+    container_name: grafana-admin-1
     volumes:
       - grafana-storage:/var/lib/grafana
     depends_on:
@@ -24,6 +24,7 @@ services:
   grafana:
     build:
       context: ./grafana
+    container_name: grafana-admin
     restart: always
     ports:
       - 3000:3000
