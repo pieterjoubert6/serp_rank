@@ -41,4 +41,3 @@ services:
       INFLUXDB_ADMIN_PASSWORD: $INFLUXDB_PASSWORD
 volumes:
   grafana-volume:
-    persist: true
