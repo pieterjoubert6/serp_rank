@@ -5,9 +5,7 @@ services:
       context: ./grafana
     container_name: grafana
     volumes:
-      - type: volume
-        source: grafana-volume
-        target: /var/lib/grafana
+      - grafana-volume:/var/lib/grafana
     ports:
       - 3000:3000
   grafana-admin:
@@ -15,9 +13,7 @@ services:
       context: ./grafana-admin
     container_name: grafana-admin
     volumes:
-      - type: volume
-        source: grafana-volume
-        target: /var/lib/grafana
+      - grafana-volume:/var/lib/grafana
     ports:
       - 3001:3000
   crawler:
@@ -25,13 +21,13 @@ services:
     build: ./crawler
     volumes:
       - /data:/home/app/mount
-    influxdb:
-      image: quay.io/influxdb/influxdb:v2.0.3
-      container_name: influxdb
-      ports:
-        - 8086:8086
-      volumes:
-        - influxdb-volume:/var/lib/influxdb
+  influxdb:
+    image: quay.io/influxdb/influxdb:v2.0.3
+    container_name: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb-volume:/var/lib/influxdb
 volumes:
   grafana-volume:
   influxdb-volume:
