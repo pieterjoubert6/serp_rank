@@ -17,7 +17,7 @@ services:
       - 3000:3000
   grafana-admin:
     build:
-      context: ./grafan-admina
+      context: ./grafan-admin
     container_name: grafana-admin
     volumes:
       - type: volume
