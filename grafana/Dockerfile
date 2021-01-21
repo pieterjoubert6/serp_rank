@@ -12,4 +12,4 @@ ENV GF_USERS_ALLOW_SIGN_UP "false"
 # ENV GF_INSTALL_PLUGINS="<list of plugins seperated by ,"
 
 # Add dashboard json files
-ADD ./dashboards /etc/grafana/dashboards
+#ADD ./dashboards /etc/grafana/dashboards
