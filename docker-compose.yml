@@ -1,26 +1,18 @@
 version: '3.3'
 services:
-  grafana:
-    user: '472'
-    build:
-      context: ./grafana
-    container_name: grafana
-    volumes:
-      - /data/grafana:/var/lib/grafana
-    ports:
-      - 3000:3000
   grafana-admin:
-    user: '472'
     build:
-      context: ./grafana-admin
+      context: grafana/grafana
     container_name: grafana-admin
     volumes:
-      - /data/grafana:/var/lib/grafana
+      - grafana-storage:/var/lib/grafana
     ports:
       - 3001:3000
   crawler:
     container_name: serp-crawler
     build: ./crawler
+    volumes:
+      - /data:/home/app/mount
   influxdb:
     image: quay.io/influxdb/influxdb:v2.0.3
     container_name: influxdb
@@ -28,5 +20,17 @@ services:
       - 8086:8086
     volumes:
       - influxdb-volume:/var/lib/influxdb
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - influxdb
+    volumes:
+      - grafana-storage:/var/lib/grafana
 volumes:
+  grafana-storage:
+    external: true
   influxdb-volume:
+    external: true
