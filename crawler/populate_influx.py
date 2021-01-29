@@ -3,9 +3,11 @@ import json
 import scrapy
 import re
 
+from ..conf import API_TOKEN, BUCKET, ORG
+
 from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
-from conf import API_TOKEN, ORG, BUCKET
+
 
 client = InfluxDBClient(url="http://localhost:8086", token=API_TOKEN)
 write_api = client.write_api(write_options=SYNCHRONOUS)

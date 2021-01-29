@@ -3,12 +3,9 @@ from datetime import datetime
 from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
 
-token = "shH3Slbz4CVJo6er5rkFs0ykM-_36NwwM2bM9poNKmb76boWmGOr2IGP_yUibLDUR6OQGxnz6vD0DRHox59WYg=="
-org = "RankTank"
-bucket = "serp_rank"
+from ..conf import API_TOKEN, BUCKET, ORG
 
-client = InfluxDBClient(url="http://localhost:8086", token=token, org=org)
-
+client = InfluxDBClient(url="http://localhost:8086", token=API_TOKEN, org=ORG)
 write_api = client.write_api(write_options=SYNCHRONOUS)
 
 
@@ -23,4 +20,4 @@ def save_rankings(latest_ranks):
                 "rank": float(item["rank"])
             }
         })
-    write_api.write(bucket, org, sequence)
+    write_api.write(BUCKET, ORG, sequence)
