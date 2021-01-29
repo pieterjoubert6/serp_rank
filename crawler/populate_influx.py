@@ -3,7 +3,7 @@ import json
 import scrapy
 import re
 
-from ..conf import API_TOKEN, BUCKET, ORG
+from conf import API_TOKEN, BUCKET, ORG
 
 from influxdb_client import InfluxDBClient
 from influxdb_client.client.write_api import SYNCHRONOUS
