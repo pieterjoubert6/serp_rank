@@ -16,20 +16,31 @@ write_api = client.write_api(write_options=SYNCHRONOUS)
 def save_rankings(rank_data, category_definitions, current_url):
     sequence = []
     regions_urls = [
-        {'region': 'United States', 'url': 'https://www.semrush.com/sensor/?db=US&category='},
-        {'region': 'United Kingdom', 'url': 'https://www.semrush.com/sensor/?db=UK&category='},
-        {'region': 'Germany', 'url': 'https://www.semrush.com/sensor/?db=DE&category='},
-        {'region': 'Italy', 'url': 'https://www.semrush.com/sensor/?db=IT&category='},
-        {'region': 'Spain', 'url': 'https://www.semrush.com/sensor/?db=ES&category='},
-        {'region': 'France', 'url': 'https://www.semrush.com/sensor/?db=FR&category='},
-        {'region': 'Australia', 'url': 'https://www.semrush.com/sensor/?db=AU&category='},
+        {'region': 'United States', 'url': 'https://www.semrush.com/sensor/?db=US&category=', 'device': "Desktop"},
+        {'region': 'United Kingdom', 'url': 'https://www.semrush.com/sensor/?db=UK&category=', 'device': "Desktop"},
+        {'region': 'Germany', 'url': 'https://www.semrush.com/sensor/?db=DE&category=', 'device': "Desktop"},
+        {'region': 'Italy', 'url': 'https://www.semrush.com/sensor/?db=IT&category=', 'device': "Desktop"},
+        {'region': 'Spain', 'url': 'https://www.semrush.com/sensor/?db=ES&category=', 'device': "Desktop"},
+        {'region': 'France', 'url': 'https://www.semrush.com/sensor/?db=FR&category=', 'device': "Desktop"},
+        {'region': 'Australia', 'url': 'https://www.semrush.com/sensor/?db=AU&category=', 'device': "Desktop"},
+        {'region': 'United States', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-US&category=',
+         'device': "Mobile"},
+        {'region': 'United Kingdom', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-UK&category=',
+         'device': "Mobile"},
+        {'region': 'Germany', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-DE&category=', 'device': "Mobile"},
+        {'region': 'Italy', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-IT&category=', 'device': "Mobile"},
+        {'region': 'Spain', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-ES&category=', 'device': "Mobile"},
+        {'region': 'France', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-FR&category=', 'device': "Mobile"},
+        {'region': 'Australia', 'url': 'https://www.semrush.com/sensor/?db=MOBILE-AU&category=', 'device': "Mobile"},
     ]
     region = None
+    device = None
     for item in regions_urls:
         if item['url'] == current_url:
             region = item['region']
+            device = item['device']
             break
-    if region is None:
+    if None in [region, device]:
         return
     for item in rank_data['ranks']['US']:
         item['category_name'] = category_definitions[item.get('category', 0)]
@@ -39,6 +50,7 @@ def save_rankings(rank_data, category_definitions, current_url):
             "time": datetime.utcfromtimestamp(date_item.timestamp()),
             "tags": {
                 "category_name": item["category_name"],
+                "device": device
             },
             "fields": {
                 "value": float(item["rank"])
