@@ -1,13 +1,13 @@
 import scrapy
 from handler import save_rankings
-from conf import REGEON_URLS
+from conf import REGION_URLS
 
 
 class OptumSpider(scrapy.Spider):
     name = 'semrush'
     allowed_domains = ['semrush.com']
     start_urls = [
-        x['url'] for x in REGEON_URLS
+        x['url'] for x in REGION_URLS
     ]
 
     def parse(self, response):  # noqa
